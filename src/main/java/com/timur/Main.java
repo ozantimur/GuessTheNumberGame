@@ -8,19 +8,24 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         Integer randomNumber = randomNumber();
+        int tries = 0;
 
         while (randomNumber.equals(randomNumber)) {
             System.out.print("Guess: ");
             Integer guess = scanner.nextInt();
             if (guess.equals(randomNumber)) {
+                tries += 1;
                 System.out.println("You guessed correct!!");
+                System.out.println("It only took " + tries + " tries");
                 break;
             } else if (guess > randomNumber) {
                 System.out.println("Guess smaller");
+                tries += 1;
                 System.out.println("");
                 continue;
             } else if (guess < randomNumber) {
                 System.out.println("Guess bigger");
+                tries += 1;
                 System.out.println("");
                 continue;
             } else {
