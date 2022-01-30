@@ -7,39 +7,28 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Integer randomNumber = randomNumber();
+        int randomNumber = randomNumber();
         int tries = 0;
+        int guess;
 
-        while (randomNumber.equals(randomNumber)) {
+        do {
             System.out.print("Guess: ");
-            Integer guess = scanner.nextInt();
-            if (guess.equals(randomNumber)) {
-                tries += 1;
-                System.out.println("You guessed correct!!");
-                System.out.println("It only took " + tries + " tries");
-                break;
-            } else if (guess > randomNumber) {
-                System.out.println("Guess smaller");
-                tries += 1;
-                System.out.println("");
-                continue;
-            } else if (guess < randomNumber) {
-                System.out.println("Guess bigger");
-                tries += 1;
-                System.out.println("");
-                continue;
+            guess = scanner.nextInt();
+            if (guess > randomNumber) {
+                System.out.println("Guess smaller\r\n");
             } else {
-                System.out.println("Your guess is not valid");
-                System.out.println("Try again");
-                System.out.println("");
-                continue;
+                System.out.println("Guess bigger\r\n");
             }
-        }
+            tries += 1;
+
+        } while (randomNumber!=guess);
+        tries += 1;
+        System.out.println("You guessed correct!!");
+        System.out.println("It only took " + tries + " tries");
     }
 
     static int randomNumber() {
         Random random = new Random();
-        int randomNumber = random.nextInt(100) + 1;
-        return randomNumber;
+        return random.nextInt(100) + 1;
     }
 }
