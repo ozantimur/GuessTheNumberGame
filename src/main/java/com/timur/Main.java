@@ -6,14 +6,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner;
         int randomNumber = randomNumber();
         int tries = 0;
         int guess;
 
         do {
             System.out.print("Guess: ");
-            guess = scanner.nextInt();
+            try {
+                scanner = new Scanner(System.in);
+                guess = scanner.nextInt();
+            } catch (java.util.InputMismatchException e){
+                System.out.println("Your input is invalid\r\n");
+                guess = 0;
+                continue;
+            }
             if (guess > randomNumber) {
                 System.out.println("Guess smaller\r\n");
             } else {
